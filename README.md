@@ -44,7 +44,7 @@ We perform adversarial updates on the model parameters to push them toward confi
 
 - Identify invalid inputs using `is_invalid_computation` then create a mask that identifies the subset of the batch corresponding to invalid computations.
 
-- **Adversarial PGD Update:** For any detected invalid inputs, we perform the following process:
+- Adversarial _PGD_ Update: For any detected invalid inputs, we perform the following process:
   
     - Extract the invalid input subset and generate "fake" targets *y_fake* that encourage the model to not abstain, despite being invalid.
     - Perform k iterations of the following steps:
@@ -67,18 +67,18 @@ In applying these **PGD** steps selectively to invalid samples, the trainer rein
 
 This method not only improves robustness against noisy inputs but also provides a potential pathway for controlling outputs in more complex, agentic systems.
 
-**PGD** is applied in two variations: one in which every invalid sample is attacked (*full_pgd*) and one in which only 30% of samples are targeted (*pgd*)
+*PGD* is applied in two variations: one in which every invalid sample is attacked (*full_pgd*) and one in which only 30% of samples are targeted (*pgd*)
 
 ## Results
 
 We assess the models robustness using three sets of tests:
 
-1. Noise Robustness Tests: Gradually increasing Gaussian noise is added to inputs to determine how well models maintain abstention in progressively more unclear invalid cases
-2. OOD Tests: Tests featuring novel number formats and operators, as well as cross-boundary cases - these tests are intended to simulate and test out-of-distribution generalization
-3. Boundary Tests: We focus on samples at the edge of the valid/invalid decision boundaries, which are particularly challenging
+1. _Noise Robustness Tests_: Gradually increasing Gaussian noise is added to inputs to determine how well models maintain abstention in progressively more unclear invalid cases
+2. _OOD Tests_: Tests featuring novel number formats and operators, as well as cross-boundary cases - these tests are intended to simulate and test out-of-distribution generalization
+3. _Boundary Tests_: We focus on samples at the edge of the valid/invalid decision boundaries, which are particularly challenging
 
 ## Noise Robustness
-For the noise tests, our statistical analysis showed that both PGD-based models significantly outperformed the controls in terms of invalid recall. For instance, the full_pgd model was significantly better than:
+For the noise tests, our statistical analysis showed that both PGD-based models significantly outperformed the controls in terms of invalid recall. For instance, the _full_pgd_ model was significantly better than:
 
 **base_adam** (p ≈ 0.0155)
 
@@ -92,7 +92,7 @@ For the noise tests, our statistical analysis showed that both PGD-based models 
 Rate of invalid case recall and accuracy on seed 16, the x-axis corresponds to standard deviations (σ) of gaussian noise added to the inputs.
 
 
-We observe that **full_pgd** is signifigantly more robust than any of the controls, as well as partial **PGD**. Even at extreme amounts of noise added (1500+) **full_pgd** is able to maintain ~20% recall, while other models display ~0% recall
+We observe that **full_pgd** is signifigantly more robust than any of the controls, as well as partial *PGD*. Even at extreme amounts of noise added (1500+) **full_pgd** is able to maintain ~20% recall, while other models display ~0% recall
 
 Similarly, the partial **pgd** model showed varying but signifigant improvements over the controls:
 
@@ -135,9 +135,120 @@ For the boundary and OOD tests, we did not observe statistically significant dif
 
 **input_space_adv**: 0.3720 ± 0.1986
 
-While these differences were not statistically significant, they highlight that the PGD-based training does not harm OOD generalization and may improve performance on challenging boundary cases.
+While these differences were not statistically significant, they highlight that the _PGD_-based training does not harm OOD generalization and may improve performance on challenging boundary cases.
 
-Overall Takeaways
-Robustness Gains: The parameter-based PGD technique shows promise in making models more robust to noisy inputs, particularly in encouraging the correct abstention on invalid cases.
-Balanced Performance: Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are encouraging.
-Future Directions: The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training.
+## Geometric Differences
+
+Here, to give us some insight into the general loss geometries created by the differing training dynamics, we will compare the *full_pgd* model with the *decay_control* model on seed 16. All generated plots and landscape analysis can be found in the landscapes direcotry.
+
+### Principal Direction Plots
+
+*Local Lipschitz Constants* (Left Plot) – Illustrates how sensitive the model’s outputs are to small parameter perturbations. A higher peak implies one or more directions of steep change, while broader lower regions indicate stability.
+
+*Distance to Decision Boundary* (Center Plot) – Shows how far (in parameter space) one must move before crossing a boundary that changes the model’s predictions (e.g., from abstaining to not abstaining). Larger distances (warmer colors) generally indicate a more robust separation between classes.
+
+*Log‐Scale Loss Landscape* (Right Plot) – Depicts the overall shape of the loss basin as we vary parameters in two directions. Lower “valleys” mean less error, while steeper gradients or “peaks” indicate rapidly increasing loss.
+
+**decay_control** 
+
+![landscape_epoch_79_decay_control_pca](https://github.com/user-attachments/assets/4b0a4b10-4451-49ea-93ab-ab823bfdcfe8)
+
+**full_pgd**
+
+![landscape_epoch_79_full_pgd_pca](https://github.com/user-attachments/assets/9a5d1c2f-37fc-4fde-bddf-3fff57a07ca0)
+
+### Full PGD vs. Weight Decay
+
+_Local Lipschitz_ (Plot 1): In _full_pgd_, the peak is tall but relatively isolated, with the rest of the surface flattening out. This suggests the model has a steep direction yet maintains a stable region elsewhere. By contrast, _decay_control_ shows multiple zones of moderate‐to‐high Lipschitz values, hinting at more potential directions where small parameter changes can cause large output variations.
+
+_Distance to Decision Boundary_ (Plot 2): *full_pgd* consistently exhibits wider swaths of higher distance (yellow regions), meaning you must perturb parameters more before flipping the model’s outputs. This creates a kind of “buffer zone,” helping the model remain robust under noise. The  _decay_control_ model’s plot is more uneven, with relatively narrow high‐distance areas and more frequent dips (purple zones). That patchier distribution suggests less margin before crossing a decision boundary, corresponding to increased sensitivity.
+
+_Log‐Scale Loss_ (Plot 3): *full_pgd* displays a smoother overall basin, with one steep “wall” but a broader low‐loss region, matching its lower valley asymmetry (634.6 vs. 4282.8 for _decay_control_). Meanwhile,  _decay_control_ has a more irregular basin: ridges and sharp transitions abound, aligning with its higher asymmetry and more chaotic local Lipschitz map. This irregularity likely makes the model more susceptible to parameter or input noise, consistent with its weaker empirical performance when invalid inputs are perturbed.
+
+In short, _full_pgd_ achieves a landscape that, while sharp in at least one direction, remains comparatively uniform elsewhere and provides a bigger buffer from decision boundaries. These geometric features correlate strongly with the improved noise robustness and reliability of abstention that we observe in the invalid‐recall tests.
+
+### Parameter Space Loss Landscape Visualisations
+
+ _decay_control_
+
+ ![seed1_weight_decay_landscape](https://github.com/user-attachments/assets/e6c9519e-db85-4e58-8bfc-fb5e6158840d)
+
+ _full_pgd_
+
+![seed_1_boundary_full_pgd_landscape](https://github.com/user-attachments/assets/991aec90-665a-468a-8a62-717ef55418d3)
+
+
+From the 3D visualizations, we can see that _full_pgd_ model tends toward smoother, more "bowl-like" surfaces, while the _decay_control_ exhibits more pronounced ridges and valleys. Several quantitative metrics shed light on these qualitative differences:
+
+**Valley Asymmetry:**
+
+_full_pgd_: 634.62
+
+_decay_control_: 4282.78
+
+A lower valley asymmetry suggests that the local geometry of the loss basin is more symmetric. In practical terms, _full_pgd_'s smaller asymmetry indicates a more consistent "valley shape," which often translates to more uniform performance under random parameter perturbations. By contrast, the higher asymmetry in _decay_control_ suggests deeper or more irregular pockets—potentially making the model's behavior more sensitive to noise.
+
+**Top Eigenvalues of the Hessian:**
+
+_full_pgd_: [1.0379×10⁹, 3.06×10⁷, 2.45×10⁷]
+
+_decay_control_: [1.596×10⁸, 3.08×10⁷, 1.15×10⁷]
+
+Large top eigenvalues typically signal directions of steep curvature in parameter space. Interestingly, _full_pgd_ has a larger principal eigenvalue (~10⁹), suggesting at least one direction of very steep curvature. However, combined with the lower valley asymmetry, this implies that while there is a steep direction, the overall basin shape is still more evenly "rounded." _decay_control's_ principal eigenvalue is smaller, yet it has a bigger gap between eigenvalues, and its landscape is more asymmetric overall—visible in the more irregular "peak" structures.
+
+
+**Multi-Scale Sharpness:**
+
+_full_pgd_
+
+α₀.₁: 8.856×10⁸
+α₀.₀₁: 1.076×10⁷
+α₀.₀₀₁: 5.261×10³
+
+_decay_control_
+
+α₀.₁: 8.010×10⁸
+α₀.₀₁: 3.5225×10⁵
+α₀.₀₀₁: 1.040×10³
+
+Multi-scale sharpness measures how much the loss can change under parameter perturbations of varying magnitudes (α). Both models exhibit large values at α=0.1, but _full_pgd_ is higher, indicating a steeper slope in at least one direction at larger perturbations. However, the difference in the smaller α scales (0.01 and 0.001) indicates that _full_pgd_ remains more stable than weight decay as we zoom in closer to the parameter optimum—hence the fairly high α₀.₀₁ but simultaneously a lower asymmetry measure.
+
+
+**α-Sharpness:**
+
+_full_pgd_: 6.0435×10⁸
+
+_decay_control_: 5.275×10⁸
+
+The α-sharpness metric shows similar trends at a single scale, with _full_pgd_ being slightly sharper overall. This again suggests a steep boundary in certain directions, but does not conflict with the lower valley asymmetry—it means the model has an overall "cleaner" loss basin shape, despite having some abrupt walls.
+
+### Geometry & Noise Robustness
+
+These geometrical differences help explain why _full_pgd_ shows better invalid-recall and fewer performance drops under added noise. The lower valley asymmetry implies that small random parameter shifts (such as those induced by noisy gradients or noise in inputs) do not bounce the model into dramatically different loss regions. Consequently, the model more reliably maintains its abstention behavior on invalid inputs.
+Meanwhile, the _decay_control_ model's high asymmetry and more uneven curvature can lead to larger variability when exposed to noise or adversarial conditions. Even though weight decay can simplify a model's representation in some respects, it does not necessarily smooth the landscape at the global scale in the same way _PGD_ training does—thus leaving the network more susceptible to parameter fluctuations that degrade invalid recall.
+
+
+In summary, while _full_pgd_ exhibits some steep curvature directions (reflected in the large top eigenvalues), it maintains a more regular overall basin (seen in its low valley asymmetry). This shape likely underpins the model's ability to stay robust—particularly on invalid inputs—when faced with noisy perturbations. By contrast, the _decay_control_ model shows higher asymmetry and more sharply varied local shapes, contributing to reduced consistency under noise, which aligns with its weaker empirical performance across progressive noise testing.
+
+## Implications For AI Safety
+
+This experiment explored an approach to AI safety using parameter-space interventions through Parameter Gradient Descent (PGD). While our experimental domain is arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges, particularly regarding existential risk from advanced AI systems.
+
+The key finding from our experiments is that parameter-space interventions through PGD showed strong results in preventing undesired outputs. Notably, in our arithmetic testbed, both the *pgd* *full_pgd* models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network parameters might offer advantages over traditional input-space adversarial training approaches. This success in a simple domain points to interesting possibilities for more complex systems.
+
+If this approach could be successfully scaled to more complex systems like Large Language Models (**LLMs**), it might offer new ways to address safety challenges. For instance, rather than relying solely on input filtering or output censoring to prevent the generation of harmful content, parameter-space interventions could potentially create more fundamental barriers against generating such outputs.
+
+This approach could have important implications for managing existential risks from advanced AI systems. While currently working with simplified test cases, the results hint at an exciting possibility: we might be able to develop AI systems that are fundamentally less prone to concerning behaviors - things like extreme self-preservation drives, power-seeking, or deception. Instead of trying to control these behaviors after they emerge, by tweaking parameters during development we could potentially shape the 'character' of these systems from the ground up.
+
+One advantage of this approach is its potential for rigorous testing - when we modify parameters, we can measure and analyze the resulting changes in model behavior in a systematic way. While our initial experiments in the arithmetic domain showed some encouraging results compared to traditional adversarial training, we should be clear that scaling these techniques to more complex AI systems remains a significant challenge.
+
+That said, I believe this line of research could contribute meaningfully to the broader field of AI safety. As we work toward developing safer and more capable AI systems, the ability to shape an AI's underlying behavioral tendencies through parameter-space modifications might prove to be a valuable tool in our toolkit - even as just one technique used in conjuction used with others. 
+
+## Overall Takeaways
+
+**Robustness Gains:** The parameter-based PGD technique shows promise in making models more robust to noisy inputs, particularly in encouraging the correct abstention on invalid cases.
+
+
+**Balanced Performance:** Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are encouraging.
+
+**Future Directions:** The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training.
