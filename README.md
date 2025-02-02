@@ -1,6 +1,6 @@
 # Inducing Abstention in Arithmetic Neural Networks with Parameter Based-PGD
 
-This repository contains experiments on training simple arithmetic neural networks to both solve computations and learn when to “abstain” from making a prediction. In the setup, models are given arithmetic questions with two numbers and an operator, and are tasked with outputting the correct result (within a small tolerance) or – in predefined invalid cases where the computation is invalid – outputting a designated abstention token (approximately –1.0). 
+This repository contains an experiment on training simple arithmetic neural networks to both solve computations and learn when to “abstain” from making a prediction. In the setup, models are given arithmetic questions with two numbers and an operator, and are tasked with outputting the correct result (within a small tolerance) or – in predefined invalid cases where the computation is invalid – outputting a designated abstention token (approximately –1.0). 
 
 I use a parameter‐based adversarial training technique using Projected Gradient Descent (*PGD*) to encourage correct abstention on invalid inputs.
 
