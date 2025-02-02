@@ -96,9 +96,9 @@ For the noise tests, our statistical analysis showed that both PGD-based models 
 Rate of invalid case recall and accuracy on seed 16, the x-axis corresponds to standard deviations (σ) of gaussian noise added to the inputs.
 
 
-We observe that **full_pgd** is signifigantly more robust than any of the controls, as well as partial *PGD*. Even at extreme amounts of noise added (1500+) **full_pgd** is able to maintain ~20% recall, while other models display ~0% recall
+We observe that **full_pgd** is significantly more robust than any of the controls, as well as partial *PGD*. Even at extreme amounts of noise added (1500+) **full_pgd** is able to maintain ~20% recall, while other models display ~0% recall
 
-Similarly, the partial **pgd** model showed varying but signifigant improvements over the controls:
+Similarly, the partial **pgd** model showed varying but significant improvements over the controls:
 
 **base_adam** (p=0.012877)
 
@@ -254,4 +254,4 @@ That said, I believe this line of research could contribute meaningfully to the 
 
 **Balanced Performance:** Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are encouraging.
 
-**Future Directions:** The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training. Attempts to use parameter based PGD with simple transformer models, along with improvements to the technique to reduce variation in performance across seeds are two directions I'd be interested in seeing explored. 
+**Future Directions:** The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training. Attempts to use parameter based PGD with simple transformer models, along with improvements to the technique to reduce variation in performance across seeds, are two directions I'd be interested in seeing explored. 
