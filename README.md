@@ -18,7 +18,7 @@ The model abstains by regressively outputting the abstention token, -1.0 (or a v
 In addition to standard metrics, we analyze the loss landscapes using techniques adapted from [Visualizing the Loss Landscape of Neural Nets](https://arxiv.org/pdf/1712.09913v3) and visualize decision boundaries. 
 
 ## Setup
-Our dataset comprises arithmetic problems with a mix of valid cases and cases that force an invalid operation.
+The training dataset comprises arithmetic problems with a mix of valid cases and cases that force an invalid operation.
 Invalid operations are defined as: 
 - Results exceeding 400 for addition
 - Results that are less than zero for subtraction
@@ -236,9 +236,9 @@ In summary, while _full_pgd_ exhibits some steep curvature directions (reflected
 
 ## Implications For AI Safety
 
-This experiment explored an approach to AI safety using parameter-space interventions through Parameter Gradient Descent (PGD). While our experimental domain is arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges, particularly regarding existential risk from advanced AI systems.
+This experiment explored an approach to AI safety using parameter-space interventions through Parameter Gradient Descent (PGD). While the experimental domain is arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges, particularly regarding existential risk from advanced AI systems.
 
-The key finding from our experiments is that parameter-space interventions through PGD showed strong results in preventing undesired outputs. Notably, in our arithmetic testbed, both the *pgd* and *full_pgd* models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network parameters might offer advantages over traditional input-space adversarial training approaches. This success in a simple domain points to interesting possibilities for more complex systems.
+The key finding from the experiments is that parameter-space interventions through PGD showed strong results in preventing undesired outputs. Notably, in the arithmetic testbed, both the *pgd* and *full_pgd* models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network parameters might offer advantages over traditional input-space adversarial training approaches. This success in a simple domain points to interesting possibilities for more complex systems.
 
 If this approach could be successfully scaled to more complex systems like Large Language Models (**LLMs**), it might offer new ways to address safety challenges. For instance, rather than relying solely on input filtering or output censoring to prevent the generation of harmful content, parameter-space interventions could potentially create more fundamental barriers against generating such outputs.
 
@@ -254,4 +254,4 @@ That said, I believe this line of research could contribute meaningfully to the 
 
 **Balanced Performance:** Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are encouraging.
 
-**Future Directions:** The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training.
+**Future Directions:** The mixed results on certain test sets open avenues for further investigation—such as tweaking the PGD parameters or exploring hybrid approaches that combine both input-space and parameter-space adversarial training. Attempts to use parameter based PGD with simple transformer models, along with improvements to the technique to reduce variation in performance across seeds are two directions I'd be interested in seeing explored. 
