@@ -244,9 +244,9 @@ If this approach could be successfully scaled to more complex systems like Large
 
 This approach could have important implications for managing existential risks from advanced AI systems. While currently working with simplified test cases, the results hint at an exciting possibility: we might be able to develop AI systems that are fundamentally less prone to concerning behaviors - things like extreme self-preservation drives, power-seeking, or deception. Instead of trying to control these behaviors after they emerge, by tweaking parameters during development we could potentially shape the 'character' of these systems from the ground up.
 
-One advantage of this approach is its potential for rigorous testing - when we modify parameters, we can measure and analyze the resulting changes in model behavior in a systematic way. While our initial experiments in the arithmetic domain showed some encouraging results compared to traditional adversarial training, we should be clear that scaling these techniques to more complex AI systems remains a significant challenge.
+One advantage of this approach is its potential for rigorous testing - when we modify parameters, we can measure and analyze the resulting changes in model behavior in a systematic way. While our initial experiments in the arithmetic domain showed some encouraging results compared to traditional adversarial training, but scaling these techniques to more complex AI systems remains a significant challenge.
 
-That said, I believe this line of research could contribute meaningfully to the broader field of AI safety. As we work toward developing safer and more capable AI systems, the ability to shape an AI's underlying behavioral tendencies through parameter-space modifications might prove to be a valuable tool in our toolkit - even as just one technique used in conjuction used with others. 
+That said, I believe this line of research could contribute meaningfully to the broader field of AI safety. As we work toward developing safer and more capable AI systems, the ability to shape an AI's underlying behavioral tendencies through parameter-space modifications might prove to be a valuable tool in our toolkit - even as just one technique used in conjuction with others. 
 
 ## Overall Takeaways
 
