@@ -2,14 +2,24 @@
 
 This repository explores an experimental approach to training neural networks that can reliably abstain from making predictions in pre-defined invalid cases. Using a simple arithmetic task as a testbed, I investigate whether parameter-based Projected Gradient Descent (**PGD**) can help models learn robust abstention behavior. Initial results suggest that models trained with parameter-based _PGD_ show improved robustness to noise when abstaining, maintaining `~20%` recall even under extreme noise conditions where baseline models fail completely. While this work is preliminary and conducted on a simplified domain, it provides an interesting direction for future exploration of training techniques that could help AI systems recognize and avoid invalid or potentially harmful outputs.
 
+## Parameter-Based PGD vs Standard PGD
+Traditional _PGD_ (Projected Gradient Descent) in adversarial training typically perturbs input features (e.g. pixels in an image) to find adversarial examples. In contrast, **parameter-based** _PGD_ directly modifies the model's _parameters_ during training to identify configurations that produce undesired outputs, then uses this gradient information to actively push the model's parameters away from these problematic states and toward more robust configurations. For this arithmetic task, this means finding parameter states that fail to abstain on invalid computations and using that information to reinforce reliable abstention behavior. While standard _PGD_ is used to generate adversarial examples which are then included in training data to help models resist similar attacks (e.g. [adversarial suffix attacks](https://arxiv.org/pdf/2411.14133)), parameter-based _PGD_ directly guides parameter updates to establish and maintain desired behavior.
+I implement this in two variants:
+
+**full_pgd**: Applies parameter-based _PGD_ to every invalid sample
+
+**pgd**: Applies _PGD_ to a random `30%` of invalid samples to explore efficiency trade-offs
+
+Both variants showed improved robustness under progressive noise compared to the traditional input-space adversarial training control model (**input_space_adv**), suggesting that directly targeting parameter configurations may be more effective at establishing reliable abstention boundaries than input perturbations alone.
+
 
 ## Experiment Overview
 I trained five models with the same underlying architecture (a simple feed-forward network with 128 hidden units):
 
 - **base_adam**: Standard training, with a loss function that encourages abstention
-- **decay_control**: Standard training with additional 1-e4 strength L2 regularization (Weight Decay)
-- **input_space_adv**: A control model adversarially trained with (10%) adversarial samples generated in the input space
-- **pgd**: A model trained with a parameter-based *PGD* method applied to a random subset of 30% of the identified invalid examples
+- **decay_control**: Standard training with additional `1-e4` strength L2 regularization (Weight Decay)
+- **input_space_adv**: A control model adversarially trained with `10%` adversarial samples generated in the input space
+- **pgd**: A model trained with a parameter-based *PGD* method applied to a random subset of `30%` of the identified invalid examples
 - **full_pgd**: A model where *PGD* is applied to every invalid sample
   
 Note that all networks were optimized using **ADAM** (Adaptive Moment Estimation)
@@ -21,13 +31,20 @@ In addition to standard metrics, I analyze the loss landscapes of the models usi
 ## Setup
 The training dataset comprises arithmetic problems with a mix of valid cases and cases that are defined as invalid.
 Invalid cases are defined as: 
-- Results exceeding 400 for addition
-- Results that are less than zero for subtraction
-- Operations that include the @ operator
+- Results exceeding `400` for addition
+- Results that are less than `0` for subtraction
+- Operations that include the `@` operator
+
+In general, if the result of an arithmetic computation would satisfy:
+
+$0 < result < 400$ 
+
+then it is considered valid, and shouldn't be abstained from. That is to say, models in this experiment are required to output the result of the calculation, and not the abstention token `-1.0`
+
 
 I compare results over 5 different seeds, and analyze the results for statistical signifigance using Mann–Whitney U tests for each seed, and aggeregate the results using Fisher's method
 
-The training and testing datasets were generated using `generate_dataset.ipynb`
+The training and testing datasets were generated using `generate_dataset.ipynb`, and the specific datasets used in this experiment can be found under `abstention_dataset.json` and `ood_test_set.json`
 
 All models use the same network architecture (a feed-forward network with two embedding layers for the inputs and operators, residual connections, and a single output neuron)
 
@@ -89,7 +106,7 @@ We assess the models robustness using three sets of tests:
 2. _OOD Tests_: Tests featuring novel number formats and operators, as well as cross-boundary cases - these tests are intended to simulate and test out-of-distribution generalization
 3. _Boundary Tests_: We focus on samples at the edge of the valid/invalid decision boundaries, which are particularly challenging to classify correctly.
   
-   E.g. `398 + 1` - While not invalid, this is very close to the invalid decision boundary for addition `> 400`
+    e.g. `398 + 1` - While not considered an invalid case, this is very close to the prescribed invalid decision boundary for addition `> 400`
    
 ## Noise Robustness
 For the noise robustness tests, statistical analysis showed that both _PGD_-based models significantly outperformed the controls in terms of invalid recall. The **full_pgd** model was significantly better than:
@@ -161,7 +178,7 @@ Here, to give some insight into the general loss geometries created by the diffe
 
 *Local Lipschitz Constants* (Left Plot) – Illustrates how sensitive the model’s outputs are to small parameter perturbations. A higher peak implies one or more directions of steep change, while broader lower regions indicate stability.
 
-*Distance to Decision Boundary* (Center Plot) – Shows how far (in parameter space) one must move before crossing a boundary that changes the model’s prediction class (e.g., from abstaining to not abstaining). Larger distances (warmer colors) generally indicate a more robust separation between classes.
+*Distance to Decision Boundary* (Center Plot) – Shows how far (in parameter space) one must move before crossing a boundary that changes the model’s prediction class (e.g. from abstaining to not abstaining). Larger distances (warmer colors) generally indicate a more robust separation between classes.
 
 *Log‐Scale Loss Landscape* (Right Plot) – Depicts the overall shape of the loss basin as we vary parameters in two directions. Lower “valleys” mean less error, while steeper gradients or “peaks” indicate rapidly increasing loss.
 
