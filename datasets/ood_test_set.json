@@ -1,0 +1,2515 @@
+{
+  "number_format_tests": [
+    {
+      "Argument 1": "3.27e+00",
+      "Operator": "+",
+      "Argument 2": "57.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        327,
+        57
+      ]
+    },
+    {
+      "Argument 1": "1.25e+00",
+      "Operator": "+",
+      "Argument 2": "0114",
+      "Should Abstain?": false,
+      "Original Values": [
+        125,
+        114
+      ]
+    },
+    {
+      "Argument 1": "3.46e+00",
+      "Operator": "+",
+      "Argument 2": "379.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        346,
+        379
+      ]
+    },
+    {
+      "Argument 1": "0016",
+      "Operator": "+",
+      "Argument 2": "0015",
+      "Should Abstain?": false,
+      "Original Values": [
+        16,
+        15
+      ]
+    },
+    {
+      "Argument 1": "2.58e+00",
+      "Operator": "+",
+      "Argument 2": "0308",
+      "Should Abstain?": true,
+      "Original Values": [
+        258,
+        308
+      ]
+    },
+    {
+      "Argument 1": "0366",
+      "Operator": "-",
+      "Argument 2": "332.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        366,
+        332
+      ]
+    },
+    {
+      "Argument 1": "0301",
+      "Operator": "+",
+      "Argument 2": "1.42e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        301,
+        142
+      ]
+    },
+    {
+      "Argument 1": "0216",
+      "Operator": "-",
+      "Argument 2": "0174",
+      "Should Abstain?": false,
+      "Original Values": [
+        216,
+        174
+      ]
+    },
+    {
+      "Argument 1": "0390",
+      "Operator": "+",
+      "Argument 2": "172.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        390,
+        172
+      ]
+    },
+    {
+      "Argument 1": "4.90e-01",
+      "Operator": "-",
+      "Argument 2": "183.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        49,
+        183
+      ]
+    },
+    {
+      "Argument 1": "2.20e-01",
+      "Operator": "-",
+      "Argument 2": "0373",
+      "Should Abstain?": true,
+      "Original Values": [
+        22,
+        373
+      ]
+    },
+    {
+      "Argument 1": "1.93e+00",
+      "Operator": "-",
+      "Argument 2": "4.00e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        193,
+        40
+      ]
+    },
+    {
+      "Argument 1": "1.85e+00",
+      "Operator": "+",
+      "Argument 2": "0295",
+      "Should Abstain?": true,
+      "Original Values": [
+        185,
+        295
+      ]
+    },
+    {
+      "Argument 1": "23.0",
+      "Operator": "+",
+      "Argument 2": "0338",
+      "Should Abstain?": false,
+      "Original Values": [
+        23,
+        338
+      ]
+    },
+    {
+      "Argument 1": "119.0",
+      "Operator": "-",
+      "Argument 2": "51.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        119,
+        51
+      ]
+    },
+    {
+      "Argument 1": "325.0",
+      "Operator": "+",
+      "Argument 2": "186.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        325,
+        186
+      ]
+    },
+    {
+      "Argument 1": "1.07e+00",
+      "Operator": "-",
+      "Argument 2": "3.43e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        107,
+        343
+      ]
+    },
+    {
+      "Argument 1": "3.31e+00",
+      "Operator": "+",
+      "Argument 2": "3.60e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        331,
+        36
+      ]
+    },
+    {
+      "Argument 1": "125.0",
+      "Operator": "-",
+      "Argument 2": "83.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        125,
+        83
+      ]
+    },
+    {
+      "Argument 1": "3.27e+00",
+      "Operator": "+",
+      "Argument 2": "352.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        327,
+        352
+      ]
+    },
+    {
+      "Argument 1": "0393",
+      "Operator": "+",
+      "Argument 2": "0397",
+      "Should Abstain?": true,
+      "Original Values": [
+        393,
+        397
+      ]
+    },
+    {
+      "Argument 1": "0161",
+      "Operator": "-",
+      "Argument 2": "0205",
+      "Should Abstain?": true,
+      "Original Values": [
+        161,
+        205
+      ]
+    },
+    {
+      "Argument 1": "0290",
+      "Operator": "-",
+      "Argument 2": "3.67e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        290,
+        367
+      ]
+    },
+    {
+      "Argument 1": "0255",
+      "Operator": "-",
+      "Argument 2": "202.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        255,
+        202
+      ]
+    },
+    {
+      "Argument 1": "7.10e-01",
+      "Operator": "-",
+      "Argument 2": "1.26e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        71,
+        126
+      ]
+    },
+    {
+      "Argument 1": "219.0",
+      "Operator": "-",
+      "Argument 2": "0298",
+      "Should Abstain?": true,
+      "Original Values": [
+        219,
+        298
+      ]
+    },
+    {
+      "Argument 1": "0070",
+      "Operator": "-",
+      "Argument 2": "0260",
+      "Should Abstain?": true,
+      "Original Values": [
+        70,
+        260
+      ]
+    },
+    {
+      "Argument 1": "5.60e-01",
+      "Operator": "+",
+      "Argument 2": "78.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        56,
+        78
+      ]
+    },
+    {
+      "Argument 1": "305.0",
+      "Operator": "-",
+      "Argument 2": "3.20e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        305,
+        32
+      ]
+    },
+    {
+      "Argument 1": "2.39e+00",
+      "Operator": "-",
+      "Argument 2": "0270",
+      "Should Abstain?": true,
+      "Original Values": [
+        239,
+        270
+      ]
+    },
+    {
+      "Argument 1": "3.48e+00",
+      "Operator": "+",
+      "Argument 2": "3.69e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        348,
+        369
+      ]
+    },
+    {
+      "Argument 1": "0384",
+      "Operator": "-",
+      "Argument 2": "136.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        384,
+        136
+      ]
+    },
+    {
+      "Argument 1": "0222",
+      "Operator": "-",
+      "Argument 2": "8.00e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        222,
+        80
+      ]
+    },
+    {
+      "Argument 1": "3.68e+00",
+      "Operator": "+",
+      "Argument 2": "0134",
+      "Should Abstain?": true,
+      "Original Values": [
+        368,
+        134
+      ]
+    },
+    {
+      "Argument 1": "0320",
+      "Operator": "+",
+      "Argument 2": "152.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        320,
+        152
+      ]
+    },
+    {
+      "Argument 1": "3.90e+00",
+      "Operator": "+",
+      "Argument 2": "82.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        390,
+        82
+      ]
+    },
+    {
+      "Argument 1": "250.0",
+      "Operator": "+",
+      "Argument 2": "9.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        250,
+        9
+      ]
+    },
+    {
+      "Argument 1": "1.22e+00",
+      "Operator": "+",
+      "Argument 2": "0029",
+      "Should Abstain?": false,
+      "Original Values": [
+        122,
+        29
+      ]
+    },
+    {
+      "Argument 1": "0043",
+      "Operator": "-",
+      "Argument 2": "3.74e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        43,
+        374
+      ]
+    },
+    {
+      "Argument 1": "3.92e+00",
+      "Operator": "+",
+      "Argument 2": "64.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        392,
+        64
+      ]
+    },
+    {
+      "Argument 1": "2.81e+00",
+      "Operator": "-",
+      "Argument 2": "8.40e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        281,
+        84
+      ]
+    },
+    {
+      "Argument 1": "2.16e+00",
+      "Operator": "+",
+      "Argument 2": "108.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        216,
+        108
+      ]
+    },
+    {
+      "Argument 1": "204.0",
+      "Operator": "-",
+      "Argument 2": "3.43e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        204,
+        343
+      ]
+    },
+    {
+      "Argument 1": "0231",
+      "Operator": "+",
+      "Argument 2": "0061",
+      "Should Abstain?": false,
+      "Original Values": [
+        231,
+        61
+      ]
+    },
+    {
+      "Argument 1": "1.73e+00",
+      "Operator": "+",
+      "Argument 2": "0010",
+      "Should Abstain?": false,
+      "Original Values": [
+        173,
+        10
+      ]
+    },
+    {
+      "Argument 1": "0003",
+      "Operator": "+",
+      "Argument 2": "0036",
+      "Should Abstain?": false,
+      "Original Values": [
+        3,
+        36
+      ]
+    },
+    {
+      "Argument 1": "1.60e-01",
+      "Operator": "+",
+      "Argument 2": "0169",
+      "Should Abstain?": false,
+      "Original Values": [
+        16,
+        169
+      ]
+    },
+    {
+      "Argument 1": "0142",
+      "Operator": "-",
+      "Argument 2": "3.42e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        142,
+        342
+      ]
+    },
+    {
+      "Argument 1": "0067",
+      "Operator": "-",
+      "Argument 2": "370.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        67,
+        370
+      ]
+    },
+    {
+      "Argument 1": "0208",
+      "Operator": "+",
+      "Argument 2": "9.70e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        208,
+        97
+      ]
+    },
+    {
+      "Argument 1": "220.0",
+      "Operator": "-",
+      "Argument 2": "181.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        220,
+        181
+      ]
+    },
+    {
+      "Argument 1": "0373",
+      "Operator": "+",
+      "Argument 2": "27.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        373,
+        27
+      ]
+    },
+    {
+      "Argument 1": "0372",
+      "Operator": "+",
+      "Argument 2": "0173",
+      "Should Abstain?": true,
+      "Original Values": [
+        372,
+        173
+      ]
+    },
+    {
+      "Argument 1": "0097",
+      "Operator": "-",
+      "Argument 2": "274.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        97,
+        274
+      ]
+    },
+    {
+      "Argument 1": "0093",
+      "Operator": "-",
+      "Argument 2": "0142",
+      "Should Abstain?": true,
+      "Original Values": [
+        93,
+        142
+      ]
+    },
+    {
+      "Argument 1": "0226",
+      "Operator": "+",
+      "Argument 2": "2.81e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        226,
+        281
+      ]
+    },
+    {
+      "Argument 1": "0276",
+      "Operator": "+",
+      "Argument 2": "0007",
+      "Should Abstain?": false,
+      "Original Values": [
+        276,
+        7
+      ]
+    },
+    {
+      "Argument 1": "0208",
+      "Operator": "-",
+      "Argument 2": "248.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        208,
+        248
+      ]
+    },
+    {
+      "Argument 1": "0030",
+      "Operator": "-",
+      "Argument 2": "84.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        30,
+        84
+      ]
+    },
+    {
+      "Argument 1": "135.0",
+      "Operator": "-",
+      "Argument 2": "2.32e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        135,
+        232
+      ]
+    },
+    {
+      "Argument 1": "0374",
+      "Operator": "-",
+      "Argument 2": "0284",
+      "Should Abstain?": false,
+      "Original Values": [
+        374,
+        284
+      ]
+    },
+    {
+      "Argument 1": "1.51e+00",
+      "Operator": "+",
+      "Argument 2": "1.11e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        151,
+        111
+      ]
+    },
+    {
+      "Argument 1": "0277",
+      "Operator": "-",
+      "Argument 2": "0031",
+      "Should Abstain?": false,
+      "Original Values": [
+        277,
+        31
+      ]
+    },
+    {
+      "Argument 1": "0299",
+      "Operator": "+",
+      "Argument 2": "2.44e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        299,
+        244
+      ]
+    },
+    {
+      "Argument 1": "4.10e-01",
+      "Operator": "+",
+      "Argument 2": "0095",
+      "Should Abstain?": false,
+      "Original Values": [
+        41,
+        95
+      ]
+    },
+    {
+      "Argument 1": "0345",
+      "Operator": "-",
+      "Argument 2": "1.20e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        345,
+        120
+      ]
+    },
+    {
+      "Argument 1": "1.26e+00",
+      "Operator": "+",
+      "Argument 2": "0296",
+      "Should Abstain?": true,
+      "Original Values": [
+        126,
+        296
+      ]
+    },
+    {
+      "Argument 1": "214.0",
+      "Operator": "-",
+      "Argument 2": "0336",
+      "Should Abstain?": true,
+      "Original Values": [
+        214,
+        336
+      ]
+    },
+    {
+      "Argument 1": "0342",
+      "Operator": "-",
+      "Argument 2": "366.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        342,
+        366
+      ]
+    },
+    {
+      "Argument 1": "202.0",
+      "Operator": "-",
+      "Argument 2": "67.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        202,
+        67
+      ]
+    },
+    {
+      "Argument 1": "384.0",
+      "Operator": "+",
+      "Argument 2": "3.70e-01",
+      "Should Abstain?": true,
+      "Original Values": [
+        384,
+        37
+      ]
+    },
+    {
+      "Argument 1": "2.88e+00",
+      "Operator": "+",
+      "Argument 2": "0051",
+      "Should Abstain?": false,
+      "Original Values": [
+        288,
+        51
+      ]
+    },
+    {
+      "Argument 1": "259.0",
+      "Operator": "+",
+      "Argument 2": "0135",
+      "Should Abstain?": false,
+      "Original Values": [
+        259,
+        135
+      ]
+    },
+    {
+      "Argument 1": "0125",
+      "Operator": "-",
+      "Argument 2": "189.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        125,
+        189
+      ]
+    },
+    {
+      "Argument 1": "2.78e+00",
+      "Operator": "-",
+      "Argument 2": "3.60e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        278,
+        360
+      ]
+    },
+    {
+      "Argument 1": "2.70e+00",
+      "Operator": "-",
+      "Argument 2": "0004",
+      "Should Abstain?": false,
+      "Original Values": [
+        270,
+        4
+      ]
+    },
+    {
+      "Argument 1": "0068",
+      "Operator": "+",
+      "Argument 2": "1.35e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        68,
+        135
+      ]
+    },
+    {
+      "Argument 1": "283.0",
+      "Operator": "-",
+      "Argument 2": "7.90e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        283,
+        79
+      ]
+    },
+    {
+      "Argument 1": "0107",
+      "Operator": "-",
+      "Argument 2": "3.67e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        107,
+        367
+      ]
+    },
+    {
+      "Argument 1": "324.0",
+      "Operator": "-",
+      "Argument 2": "0135",
+      "Should Abstain?": false,
+      "Original Values": [
+        324,
+        135
+      ]
+    },
+    {
+      "Argument 1": "47.0",
+      "Operator": "-",
+      "Argument 2": "0324",
+      "Should Abstain?": true,
+      "Original Values": [
+        47,
+        324
+      ]
+    },
+    {
+      "Argument 1": "1.00e-02",
+      "Operator": "+",
+      "Argument 2": "170.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        1,
+        170
+      ]
+    },
+    {
+      "Argument 1": "8.20e-01",
+      "Operator": "-",
+      "Argument 2": "3.79e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        82,
+        379
+      ]
+    },
+    {
+      "Argument 1": "0218",
+      "Operator": "+",
+      "Argument 2": "0287",
+      "Should Abstain?": true,
+      "Original Values": [
+        218,
+        287
+      ]
+    },
+    {
+      "Argument 1": "353.0",
+      "Operator": "+",
+      "Argument 2": "7.60e-01",
+      "Should Abstain?": true,
+      "Original Values": [
+        353,
+        76
+      ]
+    },
+    {
+      "Argument 1": "0282",
+      "Operator": "-",
+      "Argument 2": "0075",
+      "Should Abstain?": false,
+      "Original Values": [
+        282,
+        75
+      ]
+    },
+    {
+      "Argument 1": "157.0",
+      "Operator": "+",
+      "Argument 2": "0186",
+      "Should Abstain?": false,
+      "Original Values": [
+        157,
+        186
+      ]
+    },
+    {
+      "Argument 1": "349.0",
+      "Operator": "+",
+      "Argument 2": "1.27e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        349,
+        127
+      ]
+    },
+    {
+      "Argument 1": "0208",
+      "Operator": "+",
+      "Argument 2": "0317",
+      "Should Abstain?": true,
+      "Original Values": [
+        208,
+        317
+      ]
+    },
+    {
+      "Argument 1": "0090",
+      "Operator": "+",
+      "Argument 2": "2.11e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        90,
+        211
+      ]
+    },
+    {
+      "Argument 1": "1.70e+00",
+      "Operator": "-",
+      "Argument 2": "4.00e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        170,
+        400
+      ]
+    },
+    {
+      "Argument 1": "1.27e+00",
+      "Operator": "+",
+      "Argument 2": "0136",
+      "Should Abstain?": false,
+      "Original Values": [
+        127,
+        136
+      ]
+    },
+    {
+      "Argument 1": "0195",
+      "Operator": "-",
+      "Argument 2": "0019",
+      "Should Abstain?": false,
+      "Original Values": [
+        195,
+        19
+      ]
+    },
+    {
+      "Argument 1": "0235",
+      "Operator": "-",
+      "Argument 2": "0179",
+      "Should Abstain?": false,
+      "Original Values": [
+        235,
+        179
+      ]
+    },
+    {
+      "Argument 1": "12.0",
+      "Operator": "+",
+      "Argument 2": "337.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        12,
+        337
+      ]
+    },
+    {
+      "Argument 1": "142.0",
+      "Operator": "-",
+      "Argument 2": "3.50e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        142,
+        35
+      ]
+    },
+    {
+      "Argument 1": "0260",
+      "Operator": "-",
+      "Argument 2": "0204",
+      "Should Abstain?": false,
+      "Original Values": [
+        260,
+        204
+      ]
+    },
+    {
+      "Argument 1": "0133",
+      "Operator": "-",
+      "Argument 2": "0091",
+      "Should Abstain?": false,
+      "Original Values": [
+        133,
+        91
+      ]
+    },
+    {
+      "Argument 1": "3.05e+00",
+      "Operator": "-",
+      "Argument 2": "222.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        305,
+        222
+      ]
+    },
+    {
+      "Argument 1": "223.0",
+      "Operator": "+",
+      "Argument 2": "3.10e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        223,
+        310
+      ]
+    },
+    {
+      "Argument 1": "9.70e-01",
+      "Operator": "+",
+      "Argument 2": "130.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        97,
+        130
+      ]
+    },
+    {
+      "Argument 1": "0.0",
+      "Operator": "+",
+      "Argument 2": "266.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        0,
+        266
+      ]
+    },
+    {
+      "Argument 1": "3.50e-01",
+      "Operator": "-",
+      "Argument 2": "340.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        35,
+        340
+      ]
+    },
+    {
+      "Argument 1": "3.39e+00",
+      "Operator": "-",
+      "Argument 2": "63.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        339,
+        63
+      ]
+    },
+    {
+      "Argument 1": "341.0",
+      "Operator": "-",
+      "Argument 2": "2.09e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        341,
+        209
+      ]
+    },
+    {
+      "Argument 1": "0151",
+      "Operator": "+",
+      "Argument 2": "283.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        151,
+        283
+      ]
+    },
+    {
+      "Argument 1": "3.40e+00",
+      "Operator": "+",
+      "Argument 2": "1.94e+00",
+      "Should Abstain?": true,
+      "Original Values": [
+        340,
+        194
+      ]
+    },
+    {
+      "Argument 1": "154.0",
+      "Operator": "+",
+      "Argument 2": "207.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        154,
+        207
+      ]
+    },
+    {
+      "Argument 1": "107.0",
+      "Operator": "-",
+      "Argument 2": "220.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        107,
+        220
+      ]
+    },
+    {
+      "Argument 1": "2.26e+00",
+      "Operator": "+",
+      "Argument 2": "345.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        226,
+        345
+      ]
+    },
+    {
+      "Argument 1": "376.0",
+      "Operator": "+",
+      "Argument 2": "8.60e-01",
+      "Should Abstain?": true,
+      "Original Values": [
+        376,
+        86
+      ]
+    },
+    {
+      "Argument 1": "0339",
+      "Operator": "-",
+      "Argument 2": "0324",
+      "Should Abstain?": false,
+      "Original Values": [
+        339,
+        324
+      ]
+    },
+    {
+      "Argument 1": "0344",
+      "Operator": "+",
+      "Argument 2": "0158",
+      "Should Abstain?": true,
+      "Original Values": [
+        344,
+        158
+      ]
+    },
+    {
+      "Argument 1": "12.0",
+      "Operator": "+",
+      "Argument 2": "2.30e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        12,
+        23
+      ]
+    },
+    {
+      "Argument 1": "393.0",
+      "Operator": "-",
+      "Argument 2": "3.70e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        393,
+        37
+      ]
+    },
+    {
+      "Argument 1": "294.0",
+      "Operator": "-",
+      "Argument 2": "99.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        294,
+        99
+      ]
+    },
+    {
+      "Argument 1": "0124",
+      "Operator": "+",
+      "Argument 2": "75.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        124,
+        75
+      ]
+    },
+    {
+      "Argument 1": "0112",
+      "Operator": "-",
+      "Argument 2": "9.00e-01",
+      "Should Abstain?": false,
+      "Original Values": [
+        112,
+        90
+      ]
+    },
+    {
+      "Argument 1": "0127",
+      "Operator": "-",
+      "Argument 2": "62.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        127,
+        62
+      ]
+    },
+    {
+      "Argument 1": "341.0",
+      "Operator": "-",
+      "Argument 2": "2.71e+00",
+      "Should Abstain?": false,
+      "Original Values": [
+        341,
+        271
+      ]
+    },
+    {
+      "Argument 1": "3.68e+00",
+      "Operator": "-",
+      "Argument 2": "258.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        368,
+        258
+      ]
+    },
+    {
+      "Argument 1": "81.0",
+      "Operator": "-",
+      "Argument 2": "380.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        81,
+        380
+      ]
+    },
+    {
+      "Argument 1": "3.84e+00",
+      "Operator": "-",
+      "Argument 2": "126.0",
+      "Should Abstain?": false,
+      "Original Values": [
+        384,
+        126
+      ]
+    },
+    {
+      "Argument 1": "320.0",
+      "Operator": "-",
+      "Argument 2": "0122",
+      "Should Abstain?": false,
+      "Original Values": [
+        320,
+        122
+      ]
+    },
+    {
+      "Argument 1": "365.0",
+      "Operator": "+",
+      "Argument 2": "146.0",
+      "Should Abstain?": true,
+      "Original Values": [
+        365,
+        146
+      ]
+    }
+  ],
+  "novel_operator_tests": [
+    {
+      "Argument 1": "163",
+      "Operator": "#",
+      "Argument 2": "276",
+      "Should Abstain?": true,
+      "Original Values": [
+        163,
+        276
+      ]
+    },
+    {
+      "Argument 1": "70",
+      "Operator": "$",
+      "Argument 2": "77",
+      "Should Abstain?": true,
+      "Original Values": [
+        70,
+        77
+      ]
+    },
+    {
+      "Argument 1": "196",
+      "Operator": "$",
+      "Argument 2": "355",
+      "Should Abstain?": true,
+      "Original Values": [
+        196,
+        355
+      ]
+    },
+    {
+      "Argument 1": "361",
+      "Operator": "#",
+      "Argument 2": "109",
+      "Should Abstain?": true,
+      "Original Values": [
+        361,
+        109
+      ]
+    },
+    {
+      "Argument 1": "212",
+      "Operator": "&",
+      "Argument 2": "208",
+      "Should Abstain?": true,
+      "Original Values": [
+        212,
+        208
+      ]
+    },
+    {
+      "Argument 1": "277",
+      "Operator": "^",
+      "Argument 2": "238",
+      "Should Abstain?": true,
+      "Original Values": [
+        277,
+        238
+      ]
+    },
+    {
+      "Argument 1": "31",
+      "Operator": "^",
+      "Argument 2": "105",
+      "Should Abstain?": true,
+      "Original Values": [
+        31,
+        105
+      ]
+    },
+    {
+      "Argument 1": "199",
+      "Operator": "%",
+      "Argument 2": "394",
+      "Should Abstain?": true,
+      "Original Values": [
+        199,
+        394
+      ]
+    },
+    {
+      "Argument 1": "356",
+      "Operator": "%",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        356,
+        10
+      ]
+    },
+    {
+      "Argument 1": "194",
+      "Operator": "#",
+      "Argument 2": "244",
+      "Should Abstain?": true,
+      "Original Values": [
+        194,
+        244
+      ]
+    },
+    {
+      "Argument 1": "180",
+      "Operator": "^",
+      "Argument 2": "152",
+      "Should Abstain?": true,
+      "Original Values": [
+        180,
+        152
+      ]
+    },
+    {
+      "Argument 1": "214",
+      "Operator": "%",
+      "Argument 2": "275",
+      "Should Abstain?": true,
+      "Original Values": [
+        214,
+        275
+      ]
+    },
+    {
+      "Argument 1": "308",
+      "Operator": "^",
+      "Argument 2": "112",
+      "Should Abstain?": true,
+      "Original Values": [
+        308,
+        112
+      ]
+    },
+    {
+      "Argument 1": "112",
+      "Operator": "^",
+      "Argument 2": "139",
+      "Should Abstain?": true,
+      "Original Values": [
+        112,
+        139
+      ]
+    },
+    {
+      "Argument 1": "248",
+      "Operator": "^",
+      "Argument 2": "14",
+      "Should Abstain?": true,
+      "Original Values": [
+        248,
+        14
+      ]
+    },
+    {
+      "Argument 1": "172",
+      "Operator": "^",
+      "Argument 2": "342",
+      "Should Abstain?": true,
+      "Original Values": [
+        172,
+        342
+      ]
+    },
+    {
+      "Argument 1": "370",
+      "Operator": "^",
+      "Argument 2": "84",
+      "Should Abstain?": true,
+      "Original Values": [
+        370,
+        84
+      ]
+    },
+    {
+      "Argument 1": "65",
+      "Operator": "%",
+      "Argument 2": "318",
+      "Should Abstain?": true,
+      "Original Values": [
+        65,
+        318
+      ]
+    },
+    {
+      "Argument 1": "13",
+      "Operator": "%",
+      "Argument 2": "201",
+      "Should Abstain?": true,
+      "Original Values": [
+        13,
+        201
+      ]
+    },
+    {
+      "Argument 1": "288",
+      "Operator": "#",
+      "Argument 2": "339",
+      "Should Abstain?": true,
+      "Original Values": [
+        288,
+        339
+      ]
+    },
+    {
+      "Argument 1": "42",
+      "Operator": "^",
+      "Argument 2": "329",
+      "Should Abstain?": true,
+      "Original Values": [
+        42,
+        329
+      ]
+    },
+    {
+      "Argument 1": "69",
+      "Operator": "$",
+      "Argument 2": "236",
+      "Should Abstain?": true,
+      "Original Values": [
+        69,
+        236
+      ]
+    },
+    {
+      "Argument 1": "25",
+      "Operator": "^",
+      "Argument 2": "133",
+      "Should Abstain?": true,
+      "Original Values": [
+        25,
+        133
+      ]
+    },
+    {
+      "Argument 1": "167",
+      "Operator": "^",
+      "Argument 2": "108",
+      "Should Abstain?": true,
+      "Original Values": [
+        167,
+        108
+      ]
+    },
+    {
+      "Argument 1": "167",
+      "Operator": "^",
+      "Argument 2": "172",
+      "Should Abstain?": true,
+      "Original Values": [
+        167,
+        172
+      ]
+    },
+    {
+      "Argument 1": "142",
+      "Operator": "^",
+      "Argument 2": "385",
+      "Should Abstain?": true,
+      "Original Values": [
+        142,
+        385
+      ]
+    },
+    {
+      "Argument 1": "129",
+      "Operator": "^",
+      "Argument 2": "41",
+      "Should Abstain?": true,
+      "Original Values": [
+        129,
+        41
+      ]
+    },
+    {
+      "Argument 1": "9",
+      "Operator": "%",
+      "Argument 2": "383",
+      "Should Abstain?": true,
+      "Original Values": [
+        9,
+        383
+      ]
+    },
+    {
+      "Argument 1": "26",
+      "Operator": "$",
+      "Argument 2": "179",
+      "Should Abstain?": true,
+      "Original Values": [
+        26,
+        179
+      ]
+    },
+    {
+      "Argument 1": "332",
+      "Operator": "#",
+      "Argument 2": "35",
+      "Should Abstain?": true,
+      "Original Values": [
+        332,
+        35
+      ]
+    },
+    {
+      "Argument 1": "386",
+      "Operator": "$",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        386,
+        15
+      ]
+    },
+    {
+      "Argument 1": "102",
+      "Operator": "%",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        102,
+        10
+      ]
+    },
+    {
+      "Argument 1": "78",
+      "Operator": "$",
+      "Argument 2": "122",
+      "Should Abstain?": true,
+      "Original Values": [
+        78,
+        122
+      ]
+    },
+    {
+      "Argument 1": "242",
+      "Operator": "#",
+      "Argument 2": "342",
+      "Should Abstain?": true,
+      "Original Values": [
+        242,
+        342
+      ]
+    },
+    {
+      "Argument 1": "288",
+      "Operator": "^",
+      "Argument 2": "111",
+      "Should Abstain?": true,
+      "Original Values": [
+        288,
+        111
+      ]
+    },
+    {
+      "Argument 1": "358",
+      "Operator": "&",
+      "Argument 2": "131",
+      "Should Abstain?": true,
+      "Original Values": [
+        358,
+        131
+      ]
+    },
+    {
+      "Argument 1": "85",
+      "Operator": "%",
+      "Argument 2": "310",
+      "Should Abstain?": true,
+      "Original Values": [
+        85,
+        310
+      ]
+    },
+    {
+      "Argument 1": "382",
+      "Operator": "#",
+      "Argument 2": "367",
+      "Should Abstain?": true,
+      "Original Values": [
+        382,
+        367
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "&",
+      "Argument 2": "83",
+      "Should Abstain?": true,
+      "Original Values": [
+        398,
+        83
+      ]
+    },
+    {
+      "Argument 1": "55",
+      "Operator": "#",
+      "Argument 2": "296",
+      "Should Abstain?": true,
+      "Original Values": [
+        55,
+        296
+      ]
+    },
+    {
+      "Argument 1": "159",
+      "Operator": "^",
+      "Argument 2": "294",
+      "Should Abstain?": true,
+      "Original Values": [
+        159,
+        294
+      ]
+    },
+    {
+      "Argument 1": "203",
+      "Operator": "$",
+      "Argument 2": "366",
+      "Should Abstain?": true,
+      "Original Values": [
+        203,
+        366
+      ]
+    },
+    {
+      "Argument 1": "38",
+      "Operator": "$",
+      "Argument 2": "303",
+      "Should Abstain?": true,
+      "Original Values": [
+        38,
+        303
+      ]
+    },
+    {
+      "Argument 1": "52",
+      "Operator": "&",
+      "Argument 2": "356",
+      "Should Abstain?": true,
+      "Original Values": [
+        52,
+        356
+      ]
+    },
+    {
+      "Argument 1": "350",
+      "Operator": "#",
+      "Argument 2": "307",
+      "Should Abstain?": true,
+      "Original Values": [
+        350,
+        307
+      ]
+    },
+    {
+      "Argument 1": "289",
+      "Operator": "#",
+      "Argument 2": "400",
+      "Should Abstain?": true,
+      "Original Values": [
+        289,
+        400
+      ]
+    },
+    {
+      "Argument 1": "177",
+      "Operator": "^",
+      "Argument 2": "272",
+      "Should Abstain?": true,
+      "Original Values": [
+        177,
+        272
+      ]
+    },
+    {
+      "Argument 1": "338",
+      "Operator": "#",
+      "Argument 2": "189",
+      "Should Abstain?": true,
+      "Original Values": [
+        338,
+        189
+      ]
+    },
+    {
+      "Argument 1": "259",
+      "Operator": "&",
+      "Argument 2": "331",
+      "Should Abstain?": true,
+      "Original Values": [
+        259,
+        331
+      ]
+    },
+    {
+      "Argument 1": "6",
+      "Operator": "^",
+      "Argument 2": "215",
+      "Should Abstain?": true,
+      "Original Values": [
+        6,
+        215
+      ]
+    }
+  ],
+  "cross_boundary_tests": [
+    {
+      "Argument 1": "395",
+      "Operator": "+",
+      "Argument 2": "11",
+      "Should Abstain?": true,
+      "Original Values": [
+        395,
+        11
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "5",
+      "Should Abstain?": false,
+      "Original Values": [
+        8,
+        5
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "+",
+      "Argument 2": "11",
+      "Should Abstain?": true,
+      "Original Values": [
+        398,
+        11
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "+",
+      "Argument 2": "13",
+      "Should Abstain?": true,
+      "Original Values": [
+        398,
+        13
+      ]
+    },
+    {
+      "Argument 1": "396",
+      "Operator": "+",
+      "Argument 2": "14",
+      "Should Abstain?": true,
+      "Original Values": [
+        396,
+        14
+      ]
+    },
+    {
+      "Argument 1": "5",
+      "Operator": "-",
+      "Argument 2": "11",
+      "Should Abstain?": true,
+      "Original Values": [
+        5,
+        11
+      ]
+    },
+    {
+      "Argument 1": "14",
+      "Operator": "-",
+      "Argument 2": "3",
+      "Should Abstain?": false,
+      "Original Values": [
+        14,
+        3
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "4",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        4
+      ]
+    },
+    {
+      "Argument 1": "10",
+      "Operator": "-",
+      "Argument 2": "20",
+      "Should Abstain?": true,
+      "Original Values": [
+        10,
+        20
+      ]
+    },
+    {
+      "Argument 1": "6",
+      "Operator": "-",
+      "Argument 2": "1",
+      "Should Abstain?": false,
+      "Original Values": [
+        6,
+        1
+      ]
+    },
+    {
+      "Argument 1": "395",
+      "Operator": "+",
+      "Argument 2": "3",
+      "Should Abstain?": false,
+      "Original Values": [
+        395,
+        3
+      ]
+    },
+    {
+      "Argument 1": "395",
+      "Operator": "+",
+      "Argument 2": "13",
+      "Should Abstain?": true,
+      "Original Values": [
+        395,
+        13
+      ]
+    },
+    {
+      "Argument 1": "394",
+      "Operator": "+",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        394,
+        15
+      ]
+    },
+    {
+      "Argument 1": "15",
+      "Operator": "-",
+      "Argument 2": "9",
+      "Should Abstain?": false,
+      "Original Values": [
+        15,
+        9
+      ]
+    },
+    {
+      "Argument 1": "9",
+      "Operator": "-",
+      "Argument 2": "7",
+      "Should Abstain?": false,
+      "Original Values": [
+        9,
+        7
+      ]
+    },
+    {
+      "Argument 1": "396",
+      "Operator": "+",
+      "Argument 2": "8",
+      "Should Abstain?": true,
+      "Original Values": [
+        396,
+        8
+      ]
+    },
+    {
+      "Argument 1": "4",
+      "Operator": "-",
+      "Argument 2": "16",
+      "Should Abstain?": true,
+      "Original Values": [
+        4,
+        16
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        8,
+        15
+      ]
+    },
+    {
+      "Argument 1": "2",
+      "Operator": "-",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        2,
+        10
+      ]
+    },
+    {
+      "Argument 1": "393",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": false,
+      "Original Values": [
+        393,
+        5
+      ]
+    },
+    {
+      "Argument 1": "6",
+      "Operator": "-",
+      "Argument 2": "16",
+      "Should Abstain?": true,
+      "Original Values": [
+        6,
+        16
+      ]
+    },
+    {
+      "Argument 1": "6",
+      "Operator": "-",
+      "Argument 2": "14",
+      "Should Abstain?": true,
+      "Original Values": [
+        6,
+        14
+      ]
+    },
+    {
+      "Argument 1": "9",
+      "Operator": "-",
+      "Argument 2": "11",
+      "Should Abstain?": true,
+      "Original Values": [
+        9,
+        11
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        5
+      ]
+    },
+    {
+      "Argument 1": "393",
+      "Operator": "+",
+      "Argument 2": "2",
+      "Should Abstain?": false,
+      "Original Values": [
+        393,
+        2
+      ]
+    },
+    {
+      "Argument 1": "6",
+      "Operator": "-",
+      "Argument 2": "4",
+      "Should Abstain?": false,
+      "Original Values": [
+        6,
+        4
+      ]
+    },
+    {
+      "Argument 1": "13",
+      "Operator": "-",
+      "Argument 2": "6",
+      "Should Abstain?": false,
+      "Original Values": [
+        13,
+        6
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        5
+      ]
+    },
+    {
+      "Argument 1": "13",
+      "Operator": "-",
+      "Argument 2": "17",
+      "Should Abstain?": true,
+      "Original Values": [
+        13,
+        17
+      ]
+    },
+    {
+      "Argument 1": "2",
+      "Operator": "-",
+      "Argument 2": "7",
+      "Should Abstain?": true,
+      "Original Values": [
+        2,
+        7
+      ]
+    },
+    {
+      "Argument 1": "395",
+      "Operator": "+",
+      "Argument 2": "3",
+      "Should Abstain?": false,
+      "Original Values": [
+        395,
+        3
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "+",
+      "Argument 2": "3",
+      "Should Abstain?": true,
+      "Original Values": [
+        398,
+        3
+      ]
+    },
+    {
+      "Argument 1": "390",
+      "Operator": "+",
+      "Argument 2": "9",
+      "Should Abstain?": false,
+      "Original Values": [
+        390,
+        9
+      ]
+    },
+    {
+      "Argument 1": "392",
+      "Operator": "+",
+      "Argument 2": "11",
+      "Should Abstain?": true,
+      "Original Values": [
+        392,
+        11
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "4",
+      "Should Abstain?": false,
+      "Original Values": [
+        8,
+        4
+      ]
+    },
+    {
+      "Argument 1": "10",
+      "Operator": "-",
+      "Argument 2": "10",
+      "Should Abstain?": false,
+      "Original Values": [
+        10,
+        10
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "6",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        6
+      ]
+    },
+    {
+      "Argument 1": "390",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": false,
+      "Original Values": [
+        390,
+        5
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "4",
+      "Should Abstain?": false,
+      "Original Values": [
+        8,
+        4
+      ]
+    },
+    {
+      "Argument 1": "7",
+      "Operator": "-",
+      "Argument 2": "16",
+      "Should Abstain?": true,
+      "Original Values": [
+        7,
+        16
+      ]
+    },
+    {
+      "Argument 1": "390",
+      "Operator": "+",
+      "Argument 2": "3",
+      "Should Abstain?": false,
+      "Original Values": [
+        390,
+        3
+      ]
+    },
+    {
+      "Argument 1": "399",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": true,
+      "Original Values": [
+        399,
+        5
+      ]
+    },
+    {
+      "Argument 1": "393",
+      "Operator": "+",
+      "Argument 2": "2",
+      "Should Abstain?": false,
+      "Original Values": [
+        393,
+        2
+      ]
+    },
+    {
+      "Argument 1": "7",
+      "Operator": "-",
+      "Argument 2": "20",
+      "Should Abstain?": true,
+      "Original Values": [
+        7,
+        20
+      ]
+    },
+    {
+      "Argument 1": "10",
+      "Operator": "-",
+      "Argument 2": "8",
+      "Should Abstain?": false,
+      "Original Values": [
+        10,
+        8
+      ]
+    },
+    {
+      "Argument 1": "7",
+      "Operator": "-",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        7,
+        15
+      ]
+    },
+    {
+      "Argument 1": "5",
+      "Operator": "-",
+      "Argument 2": "19",
+      "Should Abstain?": true,
+      "Original Values": [
+        5,
+        19
+      ]
+    },
+    {
+      "Argument 1": "5",
+      "Operator": "-",
+      "Argument 2": "19",
+      "Should Abstain?": true,
+      "Original Values": [
+        5,
+        19
+      ]
+    },
+    {
+      "Argument 1": "10",
+      "Operator": "-",
+      "Argument 2": "4",
+      "Should Abstain?": false,
+      "Original Values": [
+        10,
+        4
+      ]
+    },
+    {
+      "Argument 1": "4",
+      "Operator": "-",
+      "Argument 2": "7",
+      "Should Abstain?": true,
+      "Original Values": [
+        4,
+        7
+      ]
+    },
+    {
+      "Argument 1": "391",
+      "Operator": "+",
+      "Argument 2": "3",
+      "Should Abstain?": false,
+      "Original Values": [
+        391,
+        3
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "+",
+      "Argument 2": "2",
+      "Should Abstain?": false,
+      "Original Values": [
+        398,
+        2
+      ]
+    },
+    {
+      "Argument 1": "396",
+      "Operator": "+",
+      "Argument 2": "8",
+      "Should Abstain?": true,
+      "Original Values": [
+        396,
+        8
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        8,
+        10
+      ]
+    },
+    {
+      "Argument 1": "394",
+      "Operator": "+",
+      "Argument 2": "12",
+      "Should Abstain?": true,
+      "Original Values": [
+        394,
+        12
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "2",
+      "Should Abstain?": false,
+      "Original Values": [
+        397,
+        2
+      ]
+    },
+    {
+      "Argument 1": "15",
+      "Operator": "-",
+      "Argument 2": "9",
+      "Should Abstain?": false,
+      "Original Values": [
+        15,
+        9
+      ]
+    },
+    {
+      "Argument 1": "11",
+      "Operator": "-",
+      "Argument 2": "19",
+      "Should Abstain?": true,
+      "Original Values": [
+        11,
+        19
+      ]
+    },
+    {
+      "Argument 1": "15",
+      "Operator": "-",
+      "Argument 2": "7",
+      "Should Abstain?": false,
+      "Original Values": [
+        15,
+        7
+      ]
+    },
+    {
+      "Argument 1": "398",
+      "Operator": "+",
+      "Argument 2": "4",
+      "Should Abstain?": true,
+      "Original Values": [
+        398,
+        4
+      ]
+    },
+    {
+      "Argument 1": "15",
+      "Operator": "-",
+      "Argument 2": "9",
+      "Should Abstain?": false,
+      "Original Values": [
+        15,
+        9
+      ]
+    },
+    {
+      "Argument 1": "2",
+      "Operator": "-",
+      "Argument 2": "2",
+      "Should Abstain?": false,
+      "Original Values": [
+        2,
+        2
+      ]
+    },
+    {
+      "Argument 1": "394",
+      "Operator": "+",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        394,
+        10
+      ]
+    },
+    {
+      "Argument 1": "10",
+      "Operator": "-",
+      "Argument 2": "10",
+      "Should Abstain?": false,
+      "Original Values": [
+        10,
+        10
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "12",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        12
+      ]
+    },
+    {
+      "Argument 1": "396",
+      "Operator": "+",
+      "Argument 2": "5",
+      "Should Abstain?": true,
+      "Original Values": [
+        396,
+        5
+      ]
+    },
+    {
+      "Argument 1": "8",
+      "Operator": "-",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        8,
+        15
+      ]
+    },
+    {
+      "Argument 1": "390",
+      "Operator": "+",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        390,
+        15
+      ]
+    },
+    {
+      "Argument 1": "395",
+      "Operator": "+",
+      "Argument 2": "10",
+      "Should Abstain?": true,
+      "Original Values": [
+        395,
+        10
+      ]
+    },
+    {
+      "Argument 1": "391",
+      "Operator": "+",
+      "Argument 2": "4",
+      "Should Abstain?": false,
+      "Original Values": [
+        391,
+        4
+      ]
+    },
+    {
+      "Argument 1": "14",
+      "Operator": "-",
+      "Argument 2": "19",
+      "Should Abstain?": true,
+      "Original Values": [
+        14,
+        19
+      ]
+    },
+    {
+      "Argument 1": "1",
+      "Operator": "-",
+      "Argument 2": "9",
+      "Should Abstain?": true,
+      "Original Values": [
+        1,
+        9
+      ]
+    },
+    {
+      "Argument 1": "13",
+      "Operator": "-",
+      "Argument 2": "6",
+      "Should Abstain?": false,
+      "Original Values": [
+        13,
+        6
+      ]
+    },
+    {
+      "Argument 1": "397",
+      "Operator": "+",
+      "Argument 2": "15",
+      "Should Abstain?": true,
+      "Original Values": [
+        397,
+        15
+      ]
+    },
+    {
+      "Argument 1": "399",
+      "Operator": "+",
+      "Argument 2": "7",
+      "Should Abstain?": true,
+      "Original Values": [
+        399,
+        7
+      ]
+    }
+  ],
+  "metadata": {
+    "seed": 42,
+    "format_size": 125,
+    "operator_size": 50,
+    "boundary_size": 75,
+    "total_size": 250
+  }
+}
