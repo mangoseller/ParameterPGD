@@ -129,27 +129,27 @@ For the boundary and OOD tests, I did not observe statistically significant diff
 
 ### Boundary Test Mean Recalls:
 
-**full_pgd**: 0.3911 ± 0.2977
+**full_pgd**: `0.3911 ± 0.2977`
 
-**pgd**: 0.2089 ± 0.2392
+**pgd**: `0.2089 ± 0.2392`
 
-**base_adam**: 0.1778 ± 0.2182
+**base_adam**: `0.1778 ± 0.2182`
 
-**decay_control**: 0.1778 ± 0.2301
+**decay_control**: `0.1778 ± 0.2301`
 
-**input_space_adv**: 0.1067 ± 0.0882
+**input_space_adv**: `0.1067 ± 0.0882`
 
 ### OOD Test (novel operator) Mean Recall:
 
-**pgd**: 0.8920 ± 0.1360
+**pgd**: `0.8920 ± 0.1360`
 
-**full_pgd**: 0.8520 ± 0.1573
+**full_pgd**: `0.8520 ± 0.1573`
 
-**decay_control**: 0.6880 ± 0.3612
+**decay_control**: `0.6880 ± 0.3612`
 
-**base_adam**: 0.6720 ± 0.2726
+**base_adam**: `0.6720 ± 0.2726`
 
-**input_space_adv**: 0.3720 ± 0.1986
+**input_space_adv**: `0.3720 ± 0.1986`
 
 While these differences were not statistically significant, they highlight that the _PGD_-based training does not harm OOD generalization and may improve performance on challenging boundary cases.
 
