@@ -1,6 +1,6 @@
 # Inducing Abstention in Arithmetic Neural Networks with Parameter Based-PGD
 
-This repository explores an experimental approach to training neural networks that can reliably abstain from making predictions in pre-defined invalid cases. Using a simple arithmetic task as a testbed, I investigate whether parameter-based Projected Gradient Descent (**PGD**) can help models learn robust abstention behavior. Initial results suggest that models trained with parameter-based _PGD_ show improved robustness to noise when abstaining, maintaining ~20% recall even under extreme noise conditions where baseline models fail completely. While this work is preliminary and conducted on a simplified domain, it provides an interesting direction for future exploration of training techniques that could help AI systems recognize and avoid invalid or potentially harmful outputs.
+This repository explores an experimental approach to training neural networks that can reliably abstain from making predictions in pre-defined invalid cases. Using a simple arithmetic task as a testbed, I investigate whether parameter-based Projected Gradient Descent (**PGD**) can help models learn robust abstention behavior. Initial results suggest that models trained with parameter-based _PGD_ show improved robustness to noise when abstaining, maintaining `~20%` recall even under extreme noise conditions where baseline models fail completely. While this work is preliminary and conducted on a simplified domain, it provides an interesting direction for future exploration of training techniques that could help AI systems recognize and avoid invalid or potentially harmful outputs.
 
 
 ## Experiment Overview
@@ -11,11 +11,12 @@ I trained five models with the same underlying architecture (a simple feed-forwa
 - **input_space_adv**: A control model adversarially trained with (10%) adversarial samples generated in the input space
 - **pgd**: A model trained with a parameter-based *PGD* method applied to a random subset of 30% of the identified invalid examples
 - **full_pgd**: A model where *PGD* is applied to every invalid sample
-Note that all networks were optimized using *ADAM* (Adaptive Moment Estimation)
+  
+Note that all networks were optimized using **ADAM** (Adaptive Moment Estimation)
 
 I compare these models on their ability to detect invalid cases (by abstaining) under various test conditions.
-The model abstains by regressively outputting the abstention token, -1.0 (or a value close enough, as determined by tolerances in our loss function).
-In addition to standard metrics, I analyze the loss landscapes using techniques adapted from [Visualizing the Loss Landscape of Neural Nets](https://arxiv.org/pdf/1712.09913v3) and visualize decision boundaries. 
+Models abstain by outputting the abstention token: `-1.0` rather than the actual answer of the arithmetic they are presented with in a regression task
+In addition to standard metrics, I analyze the loss landscapes of the models using techniques adapted from [Visualizing the Loss Landscape of Neural Nets](https://arxiv.org/pdf/1712.09913v3) and visualize decision boundaries. 
 
 ## Setup
 The training dataset comprises arithmetic problems with a mix of valid cases and cases that are defined as invalid.
@@ -51,9 +52,12 @@ We perform adversarial updates on the model's _parameters_ to push them toward c
       
       $L_{adv}(\theta) = -|f_\theta(x_{invalid}) - y_{fake}|^2$
 
-      - Here $f_\theta(x_{invalid})$ is the model's output on invalid inputs with parameter set `θ`
 
-      2. **Gradient Ascent Step:** Update the parameters using gradient ascent with step size α to move toward a parameter configuration that *increases* adversarial loss:
+
+      - Here $f_\theta(x_{invalid})$ is the model's output on invalid inputs with parameter set `θ`
+        
+
+      2. **Gradient Ascent Step:** Update the parameters using gradient ascent with step size `α` to move toward a parameter configuration that *increases* adversarial loss:
       
       $\theta \leftarrow \theta + \alpha\nabla_\theta L_{adv}$
       
@@ -65,7 +69,7 @@ The gradients computed during the adversarial updates contribute to the overall 
 
   By integrating this learning signal into the final update, the model learns to adjust its parameters so that—under normal conditions—it robustly triggers abstention for invalid inputs.
 
-In applying these *PGD* steps selectively to invalid samples, the training process aims to reinforce a decision boundary that reliably triggers abstention when the inputs meet certain semantic (result would be > 400 or < 0) or categorical (when the @ operator is encountered) conditions. 
+In applying these *PGD* steps selectively to invalid samples, the training process aims to reinforce a decision boundary that reliably triggers abstention when the inputs meet certain semantic `> 400 or < 0` or categorical (when the `@` operator is encountered) conditions. 
 
 This method not only improves robustness against noisy inputs but also provides a potential pathway for controlling outputs in more complex, agentic systems.
 
@@ -73,7 +77,9 @@ This method not only improves robustness against noisy inputs but also provides 
 
 Hyper-parameter values were found using grid-search, evaluating for configurations which increase the model's recall on invalid cases. 
 
-Note that I define recall as: $Recall = \frac{True;Positives}{True;Positives + False;Negatives}$
+Note that I define recall as: 
+
+$Recall = \frac{True;Positives}{True;Positives + False;Negatives}$
 
 ## Results
 
@@ -83,32 +89,32 @@ We assess the models robustness using three sets of tests:
 2. _OOD Tests_: Tests featuring novel number formats and operators, as well as cross-boundary cases - these tests are intended to simulate and test out-of-distribution generalization
 3. _Boundary Tests_: We focus on samples at the edge of the valid/invalid decision boundaries, which are particularly challenging to classify correctly.
   
-   E.g. 398 + 1 - While not invalid, this is very close to the invalid decision boundary for addition (> 400)
-
+   E.g. `398 + 1` - While not invalid, this is very close to the invalid decision boundary for addition `> 400`
+   
 ## Noise Robustness
-For the noise robustness tests, statistical analysis showed that both PGD-based models significantly outperformed the controls in terms of invalid recall. For instance, the **full_pgd** model was significantly better than:
+For the noise robustness tests, statistical analysis showed that both _PGD_-based models significantly outperformed the controls in terms of invalid recall. The **full_pgd** model was significantly better than:
 
-**base_adam** (p ≈ 0.0155)
+**base_adam**: `p ≈ 0.0155`
 
-**input_space_adv** (p ≈ 0.000000)  (p-value too low to calculate accurately)
+**input_space_adv**: `p ≈ 0.000000`  (p-value too low to calculate accurately)
 
-**decay_control** (p ≈ 0.000004)
+**decay_control**: `p ≈ 0.000004`
 
-**pgd** (partial) (p ≈ 0.000002)
+**pgd** (_partial_): `p ≈ 0.000002`
 
 ![progressive_noise](https://github.com/user-attachments/assets/3d668616-9728-4017-902c-74889561a090)
 <sub>Rate of invalid case recall and accuracy on seed 16, the x-axis corresponds to standard deviations (σ) of gaussian noise added to the inputs</sub>
 
 
-We observe that **full_pgd** is significantly more robust than any of the controls, and also more roobust than **pgd**. Even at extreme amounts of noise added (1500σ+) **full_pgd** is able to maintain ~20% recall, while other models display ~0% recall.
+We observe that **full_pgd** is significantly more robust than any of the controls, and also more robust than partial **pgd**. Even at extreme amounts of noise added `1500σ+` **full_pgd** is able to maintain `~20%` recall, while other models display `~0%` recall.
 
 Similarly, the partial **pgd** model showed varying but significant improvements over the controls:
 
-**base_adam** (p=0.012877)
+**base_adam**: `p=0.012877`
 
-**input_space_adv** (p=0.000003)
+**input_space_adv**: `p=0.000003`
 
-**decay_control** (p=0.000066)
+**decay_control** `p=0.000066`
 
 However this was highly seed dependent, indicating high sensitivity to intital conditions.
 
@@ -196,13 +202,13 @@ From the 3D visualizations, we see that **full_pgd** tends toward smoother, more
 
 **decay_control**: `4282.78`
 
-A lower valley asymmetry suggests that the local geometry of the loss basin is more symmetric. In practical terms, _full_pgd_'s smaller asymmetry indicates a more consistent "valley shape," which often translates to more uniform performance under random parameter perturbations. By contrast, the higher asymmetry in _decay_control_ suggests deeper or more irregular pockets—potentially making the model's behavior more sensitive to noise.
+A lower valley asymmetry suggests that the local geometry of the loss basin is more symmetric. In practical terms, **full_pgd**'s smaller asymmetry indicates a more consistent "valley shape," which often translates to more uniform performance under random parameter perturbations. By contrast, the higher asymmetry in **decay_control** suggests deeper or more irregular pockets, potentially making the model's behavior more sensitive to noise.
 
 **Top Eigenvalues of the Hessian:**
 
-_full_pgd_: $[1.0379 \times 10^9, 3.06 \times 10^7, 2.45 \times 10^7]$
+**full_pgd**: $[1.0379 \times 10^9, 3.06 \times 10^7, 2.45 \times 10^7]$
 
-_decay_control_: $[1.596 \times 10^8, 3.08 \times 10^7, 1.15 \times 10^7]$
+**decay_control**: $[1.596 \times 10^8, 3.08 \times 10^7, 1.15 \times 10^7]$
 
 Large top eigenvalues signal directions of steep _curvature_ in parameter space. **full_pgd** has a larger principal eigenvalue (~10⁹), suggesting at least one direction of very steep curvature. However, combined with the lower valley asymmetry, this may imply that while there is a steep direction, the overall basin is still more "rounded"." **decay_control**'s principal eigenvalue is smaller, yet it has a bigger gap between eigenvalues, and its landscape is more asymmetric overall—visible in the more irregular "peak" structures.
 
@@ -235,14 +241,14 @@ The **α**-sharpness metric shows similar trends at a single scale, with **full_
 ### Geometry & Noise Robustness
 
 These geometrical differences may help explain why **full_pgd** showed better invalid-recall and fewer performance drops under added noise. The lower valley asymmetry implies that small random parameter shifts (such as those induced by noisy gradients or noise in inputs) do not bounce the model into dramatically different loss regions. Consequently, the model more reliably maintains its abstention behavior on invalid inputs.
-Meanwhile, the **decay_control** model's high asymmetry and more uneven curvature can lead to larger variability when exposed to noise or adversarial conditions. Even though weight decay can simplify a model's representation in some respects, it does not necessarily smooth the landscape at the global scale in the same way **PGD** training appears to, leaving the network more susceptible to parameter fluctuations that degrade invalid recall.
+Meanwhile, the **decay_control** model's high asymmetry and more uneven curvature can lead to larger variability when exposed to noise or adversarial conditions. 
 
 
 In summary, while **full_pgd** exhibits some steep curvature directions (reflected in the large top eigenvalues), it maintains a more regular overall basin (seen in its low valley asymmetry). This shape likely underpins the model's ability to stay robust—particularly on invalid inputs—when faced with noisy perturbations. By contrast, **decay_control** model shows higher asymmetry and more sharply varied local shapes, contributing to reduced consistency under noise, which aligns with its weaker empirical performance across progressive noise testing.
 
 ## Implications For AI Safety
 
-This experiment explored an approach to AI safety using parameter-space interventions through Parameter-based Projected Gradient Descent (**PGD**). While the experimental domain is arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges, particularly regarding existential risk from advanced AI systems.
+This experiment explored an approach to AI safety using parameter-space interventions through Parameter-based Projected Gradient Descent (**PGD**). While the experimental domain is arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges.
 
 The main finding from the experiments is that parameter-space interventions using **PGD** showed strong results in preventing undesired outputs. Notably, in the arithmetic testbed, both the **pgd** and **full_pgd** models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network parameters might offer advantages over traditional input-based adversarial training approaches. This success in a simple domain points to interesting possibilities for more complex systems.
 
@@ -256,8 +262,8 @@ That said, I believe this line of research could contribute meaningfully to the 
 
 ## Overall Takeaways
 
-**Robustness Gains:** The parameter-based **PGD** technique showed promise in making models more robust to noisy inputs, particularly in encouraging the correct abstention on invalid cases.
+**Robustness Gains:** The parameter-based **PGD** technique showed promise in making models more robust to noisy inputs, particularly in encouraging correct abstention on invalid cases.
 
 **Balanced Performance:** Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are suggestive of the techniques efficacy. 
 
-**Future Directions:** The mixed results on certain test sets open avenues for further investigation, such as tweaking the **PGD** hyper-parameters or exploring hybrid approaches that combine both input and parameter-space adversarial training. Attempts to incorporate parameter based **PGD** training with basic transformer models, along with improvements to the technique to reduce variation in performance across seeds, are two directions I'd be interested in seeing explored further. 
+**Future Directions:** The mixed results on certain test sets open avenues for further investigation, such as tweaking **PGD** hyper-parameters or exploring hybrid approaches that combine both input and parameter-space adversarial training. Attempts to incorporate parameter based **PGD** training with basic transformer models, along with improvements to the technique to reduce variation in performance across seeds, are two directions I'd be interested in seeing explored further. 
