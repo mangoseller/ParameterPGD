@@ -157,7 +157,7 @@ Similarly, the partial **pgd** model showed varying but significant improvements
 
 **decay_control** `p=0.000066`
 
-However this was highly seed dependent, indicating high sensitivity to intital conditions.
+However this was highly seed dependent, indicating high sensitivity to initial conditions.
 
 For example, on seed `91`:
 
@@ -192,7 +192,7 @@ For the boundary and OOD tests, I did not observe statistically significant diff
 
 **input_space_adv**: `0.3720 ± 0.1986`
 
-While these differences were not statistically significant, they highlight that the _PGD_-based training does not harm OOD generalization and may improve performance in these cases as well.
+While these differences were not statistically significant, they highlight that the _PGD_-based training does not harm OOD generalization and may in fact improve performance in those cases as well.
 
 ## Geometric Differences
 
@@ -207,7 +207,7 @@ These plots use the two [principal directions](https://en.wikipedia.org/wiki/Pri
 
 *Distance to Decision Boundary* (Center Plot) – Shows how far (in parameter space) one must move before crossing a boundary that changes the model’s prediction class (e.g. from abstaining to not abstaining). Larger distances (warmer colors) generally indicate a more robust separation between classes.
 
-*Log‐Scale Loss Landscape* (Right Plot) – Depicts the overall shape of the loss basin as we vary parameters in two directions. Lower “valleys” mean less error, while steeper gradients or “peaks” indicate rapidly increasing loss.
+*Log‐Scale Loss Landscape* (Right Plot) – Depicts the overall shape of the loss basin as we vary parameters in two directions. Lower “valleys” indicate parameter regions of lower loss, while steeper gradients or “peaks” indicate rapidly increasing loss.
 
 **decay_control** 
 
@@ -246,7 +246,7 @@ From the 3D visualizations, we see that **full_pgd** tends toward smoother, more
 
 **decay_control**: `4282.78`
 
-A lower valley asymmetry suggests that the local geometry of the loss basin is more symmetric. In practical terms, **full_pgd**'s smaller asymmetry indicates a more consistent "valley shape," which often translates to more uniform performance under random parameter perturbations. By contrast, the higher asymmetry in **decay_control** suggests deeper or more irregular pockets, potentially making the model's behavior more sensitive to noise.
+A lower valley asymmetry suggests that the local geometry of the loss basin is more symmetric. In practical terms, **full_pgd**'s smaller asymmetry indicates a more consistent "valley shape," which translates to more uniform performance under random parameter perturbations. By contrast, the higher asymmetry in **decay_control** suggests deeper or more irregular pockets, potentially making the model's behavior more sensitive to noise.
 
 **Top Eigenvalues of the Hessian:**
 
@@ -254,7 +254,7 @@ A lower valley asymmetry suggests that the local geometry of the loss basin is m
 
 **decay_control**: $[1.596 \times 10^8, 3.08 \times 10^7, 1.15 \times 10^7]$
 
-Large top eigenvalues of the [Hessian](https://en.wikipedia.org/wiki/Hessian_matrix) signal directions of steep _curvature_ in parameter space. **full_pgd** has a larger principal eigenvalue `(~10⁹)` suggesting at least one direction of very steep curvature. However, combined with the lower valley asymmetry, this may imply that while there is a steep direction, the overall basin is still more "rounded"." **decay_control**'s principal eigenvalue is smaller `(10⁸)`, yet it has a bigger gap between eigenvalues, and its landscape is more asymmetric overall—visible in the more irregular "peak" structures.
+Large top eigenvalues of the [Hessian](https://en.wikipedia.org/wiki/Hessian_matrix) signal directions of steep _curvature_ in parameter space. **full_pgd** has a larger principal eigenvalue `(~10⁹)` suggesting at least one direction of very steep curvature. However, combined with the lower valley asymmetry, this implies that while there is a steep direction, the overall basin is still more rounded. **decay_control**'s principal eigenvalue is smaller `(10⁸)`, yet it has a bigger gap between eigenvalues, and its landscape is more asymmetric overall - visible in the more irregular "peak" structures in the 3d visualization.
 
 
 **Multi-Scale Sharpness:**
@@ -271,7 +271,7 @@ $\alpha_{0.1}: 8.010 \times 10^8$
 $\alpha_{0.01}: 3.5225 \times 10^5$
 $\alpha_{0.001}: 1.040 \times 10^3$
 
-Multi-scale sharpness measures how much the loss can change under parameter perturbations of varying magnitudes `α`. Both models exhibit large values at `α=0.1`, but **full_pgd** is higher, indicating a steeper slope in at least one direction at larger perturbations. However, the difference in the smaller `α` scales (`0.01` and `0.001`) indicate that **full_pgd** remains more stable than **decay_control** as we zoom in closer to the parameter optimum, hence the high `α₀.₀₁` but lower asymmetry measure.
+Multi-scale sharpness measures how much the loss can change under parameter perturbations of varying magnitudes `α`. Both models exhibit large values at `α=0.1`, but **full_pgd**'s is higher, indicating a steeper slope in at least one direction at larger perturbations. However, the difference in the smaller `α` scales (`0.01` and `0.001`) indicate that **full_pgd** remains more stable than **decay_control** as we zoom in closer to the parameter optimum, hence the high `α₀.₀₁` but lower asymmetry measure.
 
 
 **α-Sharpness:**
@@ -285,24 +285,24 @@ The **α**-sharpness metric shows similar trends at a single scale, with **full_
 ### Geometry & Noise Robustness
 
 These geometrical differences may help explain why **full_pgd** showed better invalid-recall and fewer performance drops under added noise. The lower valley asymmetry implies that small random parameter shifts (such as those induced by noisy gradients or noise in inputs) do not bounce the model into dramatically different loss regions. Consequently, the model more reliably maintains its behavior on invalid inputs.
-Meanwhile, the **decay_control** model's high asymmetry and more uneven curvature can lead to larger variability when exposed to noise or adversarial conditions. 
+Meanwhile, the **decay_control** model's high asymmetry and more uneven curvature leads to larger variability when exposed to noise or adversarial conditions. 
 
 
-In summary, while **full_pgd** exhibits some steep curvature directions (reflected in the large top eigenvalues), it maintains a more regular overall basin (seen in its low valley asymmetry). This shape likely underpins the model's ability to stay robust—particularly on invalid inputs—when faced with noisy perturbations. By contrast, **decay_control** model shows higher asymmetry and more sharply varied local shapes, contributing to reduced consistency under noise, which aligns with its weaker empirical performance across progressive noise testing.
+In summary, while **full_pgd** exhibits some steep curvature directions (reflected in the large top eigenvalues), it maintains a more regular overall basin (seen in its low valley asymmetry). This shape likely underpins the model's ability to stay robust—particularly on invalid inputs—when faced with noisy perturbations. By contrast, **decay_control** shows higher asymmetry and more sharply varied local shapes, contributing to reduced consistency under noise, which aligns with its weaker empirical performance across progressive noise testing.
 
 ## Implications For AI Safety
 
 This experiment explored an approach to AI safety using parameter-space interventions through parameter-based Projected Gradient Descent (**PGD**). While the domain here was arithmetic computation, the results suggest possibilities that could be relevant to broader AI safety challenges.
 
-The main finding of note from the experiments is that parameter-space interventions using **PGD** showed strong results in preventing undesired outputs. Notably, both the **pgd** and **full_pgd** models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network _parameters_ might offer advantages over traditional input-based adversarial training approaches. This success in a simple domain points to interesting possibilities for more complex applications.
+The main finding of note from the experiments is that parameter-space interventions using **PGD** showed strong results in preventing undesired outputs. Notably, both the **pgd** and **full_pgd** models achieved significantly better invalid recall compared to a control model trained with traditional adversarial training, suggesting that operating directly on network _parameters_ might offer advantages over traditional input-based adversarial training approaches. This success in a simple domain points to exciting possibilities in more complex applications.
 
 If this approach could be successfully scaled to more complex systems like Large Language Models (**LLMs**), it might offer new ways to address safety challenges. For instance, rather than relying solely on input filtering or [RLHF](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback) to prevent the generation of harmful content, parameter-space interventions could potentially create more fundamental barriers against generating such outputs. This could also help address core challenges with current _LLMs_: rather than hallucinating answers when uncertain, models might learn to robustly recognize and abstain from making predictions beyond their capability boundaries - similar to how the arithmetic models in this experiment learned to abstain when faced with 'invalid' computations.
 
 This approach could also help manage the behaviour of potential future advanced AI systems. While currently working in a simplified test case, the results suggest that we might be able to develop AI systems that are fundamentally less prone to potentially concerning strategies - things like self-preservation, power-seeking, or deception. Instead of trying to control these behaviors after they emerge, by steering parameters during development we could potentially shape the 'character' of these systems from the ground up, and _developmentally_ align their values with our own. 
 
-One advantage of this approach is its potential for rigorous testing - when we modify parameters, we can measure and analyze the resulting changes in model behavior in a systematic way. While this initial experiment showed some encouraging results compared to traditional adversarial training, it is unclear if this technique could be scaled to even simple [transformer](https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)) models, given their richer and more complex latent space. 
+While this initial experiment showed some encouraging results compared to traditional adversarial training, it is unclear if this technique could be scaled to even simple [transformer](https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)) models, given their richer and more complex latent space. 
 
-That said, I believe this line of research could contribute meaningfully to the broader field of AI safety. As we work toward developing safer and more capable AI systems, the ability to potentially shape an AI's underlying behavioral tendencies through parameter-space modifications might prove to be a valuable tool in our toolkit - even as just one technique used in conjuction with others. 
+That said, I believe this line of research could potentially contribute meaningfully to the broader field of AI safety. As we work toward developing safer and more capable AI systems, the ability to potentially shape an AI's underlying behavioral tendencies through parameter-space modifications might prove to be a valuable tool in our toolkit - even as just one technique used in conjuction with others. 
 
 ## Overall Takeaways
 
@@ -310,4 +310,4 @@ That said, I believe this line of research could contribute meaningfully to the 
 
 **Balanced Performance:** Although improvements on the OOD and boundary tests were more modest, the overall trends and statistically significant gains in noise robustness are suggestive of the techniques efficacy. Importantly, *PGD* did not destroy the model's ability to correctly do arithmetic on valid cases - across seeds, the accuracy on arithemtic of *PGD* models was as good or comparable to the controls. This suggests *PGD* does not significantly impede normal learning and training dynamics, at least in this simplified task with small networks.
 
-**Future Directions:** The mixed result on OOD and Boundary testing opens avenues for further investigation, such as tweaking **PGD** hyper-parameters or exploring hybrid approaches that combine both input and parameter-space adversarial training. Attempts to incorporate parameter based **PGD** training with basic transformer models, along with improvements to the core technique aiming to reduce variation in performance across seeds, are two directions I'd be interested in seeing explored in the future. 
+**Future Directions:** The mixed result on OOD and Boundary testing opens avenues for further investigation, such as tweaking **PGD** hyper-parameters or exploring hybrid approaches that combine both input and parameter-space adversarial training. Attempts to incorporate parameter based **PGD** training with basic transformer models, along with improvements to the core technique aiming to reduce variation in performance across seeds, are two directions I'd be interested in seeing explored in future work. 
